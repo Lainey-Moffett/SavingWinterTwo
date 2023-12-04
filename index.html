@@ -1,0 +1,77 @@
+<html>
+    <head>
+        <title>Saving Winter!</title>
+        <link rel="stylesheet" href="home.css">
+    </head>
+
+
+<!----------------------------Body--->
+
+<!---TEST-->
+<div class="imgOne">
+    <div class="caption">
+    <span class="border">Winter Festival's</span>
+    <p style="font-size: 30px; color: white; text-shadow: gray 2px 2px;">Saving Winter!</p>
+    </div>
+  </div>
+  
+  <div style="color: #777;background-color:white;text-align:center;padding:50px 80px;text-align: justify;">
+    <h3 style="text-align:center;">Saving Winter!</h3>
+    <p style="text-align: center;">Welcome all Owls! You are just in time! We got word early this morning that the Winter Grinch is planning on destroying winter for everyone! We MUST act fast in order to stop his efforts! Are you ready to take on this important task of saving winter? It will be a hard journey with struggles along the way, but if you get stuck, Vixen, the reindeer mission advisor will be here to provide hints. Your efforts will be greatly rewarded with the chance to earn prizes and raffle tickets! <br> Refer to the link below if you need help! <br> <a style="color: #777;" href="https://sites.google.com/gcisdstudents.net/saving-winter/resources" target="_blank">Resources</a></p>
+  </div>
+  
+  <div class="imgTwo">
+    <div class="caption">
+    <span class="border"><a href="levelOne.html" style="font-size: 25px;color: #f7f7f7;" target="_blank">Ready to Save Winter?</a></span>
+    </div>
+  </div>
+  
+  <div style="position:relative;">
+    <div style="color:#ddd;background-color:#223b54;text-align:center;padding:20px 80px;text-align: center;">
+    <div class="contentTwo">
+        <p>Time left:</p>
+       
+  <div class="timer">
+        <p id="demo"></p>
+
+        <script>
+        var countDownDate = new Date("Dec 1, 2022 5:00:00 pm CST").getTime();
+
+        var x = setInterval(function() {
+
+        var now = new Date().getTime();
+
+        var distance = countDownDate - now;
+
+        var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        document.getElementById("demo").innerHTML = days + "d " + hours + "h "
+        + minutes + "m " + seconds + "s ";
+        
+        if (distance < 0) {
+            clearInterval(x);
+            document.getElementById("demo").innerHTML = "Sorry, time has run out!";
+                
+        }
+        }, 1000);
+        </script>
+
+    </div>
+
+
+</div>
+</div>
+  </div>
+  
+  </div>
+
+</div>
+
+</body>
+
+
+
+</html>
