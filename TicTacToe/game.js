@@ -115,10 +115,8 @@ window.onload = function(){
         element.innerText = "Executable not found at /usr/bin/bot.sh";
         type_text(element);
         setTimeout(function () { //In timeout so that the dom changes would load.
-            alert("Congrats, owl! You beat the Winter Grinch! This means that school can officially be let out now!");
-            alert("However, I heard that a few other owls are stuck in school still as the Winter Grinch told their teacher not to let them out! You must help them! 
-");
-            window.location.href='https://scratch.mit.edu/projects/934669354';
+            alert("Congrats, owl! You beat the Winter Grinch! This means that school can officially be let out now! However, I heard that a few other owls are stuck in school still as the Winter Grinch told their teacher not to let them out! You must help them! https://scratch.mit.edu/projects/934669354");
+    
         }, 100);
 
     }
