@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>First Maze</title>
+    <style>
+        body{
+            margin: 0;
+            padding: 0;
+            font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        h1, .display{
+            margin-left: auto;
+            margin-right: auto;
+        }
+        h1{
+            font-size: 100px;
+        }
+        button{
+            background-color:darkseagreen;
+        }
+        button:hover{
+            background-color:rgb(100, 136, 100);
+            color: white;
+        }
+
+        .title{
+            background-image: url(ornament.JPG);
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+            background-size: cover;
+            top: 0;
+            height:  100vh;
+            box-shadow: 0px 10px 10px darkgrey;
+        }
+
+        .display{
+            display: grid;
+            grid-template-rows:  repeat(2, 1fr);
+            grid-template-columns:  repeat(4, 1fr);
+            width: 75%;
+            border: 7px solid darkgreen;
+            min-width: 250px;
+        }
+        #mazeImage{
+            grid-row-start: 1;
+            grid-row-end: 3;
+            grid-column-start: 1;
+            grid-column-end: 4;
+            width: 100%;
+        }
+        #left{
+            grid-row-start: 3;
+            grid-row-end: 4;
+            grid-column-start: 1;
+            grid-column-end: 2;
+            min-height: 30px;
+            max-height: 40px;
+        } 
+        #straight{
+            grid-row-start: 3;
+            grid-row-end: 4;
+            grid-column-start: 2;
+            grid-column-end: 3;
+            min-height: 30px;
+            max-height: 40px;
+        } 
+        #right{
+            grid-row-start: 3;
+            grid-row-end: 4;
+            grid-column-start: 2;
+            grid-column: 3;
+            min-height: 30px;
+            max-height: 40px;
+        }
+        .sidepanel{
+            grid-row-start: 1;
+            grid-row-end: 4;
+            grid-column-start: 4;
+            grid-column-end: 5;
+            background-color:darkgreen;
+            color: white;
+        }
+        #notes{
+            min-width: 80%;
+            min-height: 25%;
+            max-width: 100%;
+            max-height: 80%;
+            visibility: hidden;
+        }
+        #key{
+            color: white;
+            visibility: hidden;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="title">
+        <br>
+        <br>
+        <br>
+        <h1 align="center">The First Maze</h1>
+        <br>
+    </div>
+    <br>
+    <br>
+    <p>Right now the only things that work are:  </p>
+    <ul>
+        <li>Clicking the pinecone on the branch adds the text area to inventory.</li>
+        <li>Clicking the unobstructed green ornament adds a key to inventory.</li>
+        <li>Clicking the unobstructed gold ornament with the key in inventory changes the background color (not really relevant, more of a substitute for whatever action may be needed with the final code) and removes the key from inventory.</li>
+    </ul>
+    <p>The code for identifying if an object is clicked isn't perfect (I guessed and checked for the most part), but seeing as this image likely wouldn't be used it doesn't really matter because I will have to redo the code anyways.</p>
+    <div class="display" align="center">
+        <img id="mazeImage" src="ornament.JPG">
+        <button id="left" >Left</button>
+        <button id="straight">Straight</button>
+        <button id="right">Right</button>
+        <div class="sidepanel">
+            <p>Inventory:  </p>
+            <textarea id="notes"></textarea>
+            <p id="key">Key</p>
+        </div>
+    </div>
+    <br>
+
+
+    <script defer>
+        let mazeImage = document.getElementById("mazeImage");
+        let notes = document.getElementById("notes");
+        let key = document.getElementById("key");
+
+        let isKey = false;
+        let noMoreKey = false;
+
+        mazeImage.onclick = function(){
+            let x = event.offsetX;
+            let y = event.offsetY;
+            console.log(x, y);
+            console.log(mazeImage.width +", "+ mazeImage.height);
+            //pinecone
+            if(x>0.68*mazeImage.width && x<0.88*mazeImage.width && y>0.36*mazeImage.height && y<0.56*mazeImage.height){
+                console.log("Success!");
+                notes.style.visibility = "visible";
+            }
+            //green ornament
+            if(noMoreKey == false && x>0.13*mazeImage.width && x<0.31*mazeImage.width && y>0.63*mazeImage.height && y<0.89*mazeImage.height){
+                isKey = true;
+                key.style.visibility = "visible";
+
+            }
+            //gold ornament
+            if(isKey == true && x>0.36*mazeImage.width && x<0.55*mazeImage.width && y>0.64*mazeImage.height && y<0.91*mazeImage.height){
+                document.body.style.backgroundColor = "blue";
+                isKey = false;
+                key.style.visibility = "hidden";
+                noMoreKey = true;
+            }
+        }
+    </script>
+</body>
+</html>
