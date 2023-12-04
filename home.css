@@ -1,0 +1,49 @@
+body, html {
+    height: 100%;
+    margin: 0;
+    user-select: none;
+  }
+  
+  .imgOne, .imgTwo, .imgThree {
+    position: relative;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  
+  }
+  .imgOne {
+    background-image: url("ian-schneider-dqMxDqdhg_4-unsplash.jpg");
+    min-height: 100%;
+  }
+  
+  .imgTwo {
+    background-image: url("bob-canning-r53rNKb_7s8-unsplash.jpg");
+    min-height: 400px;
+  }
+  
+  /* .imgThree {
+    background-image: url("/roberto-nickson-5PQn41LFsQk-unsplash.jpg");
+    min-height: 400px;
+  } */
+  
+  .caption {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 100%;
+    text-align: center;
+    color: grey;
+  }
+  
+  .caption span.border {
+    color: #fff;
+    text-shadow: grey 2px 2px;
+    padding: 18px;
+    font-size: 50px;
+  }
+  
+  h3 {
+    font: 20px "Lato", sans-serif;
+    color: #111;
+  }
