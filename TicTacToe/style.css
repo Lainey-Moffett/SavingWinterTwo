@@ -1,6 +1,6 @@
 @font-face {
     font-family: 'Terminal';
-    src: url(fonts/NotoSansMono-Regular.ttf) format('truetype');
+    src: url(NotoSansMono-Regular.ttf) format('truetype');
   }
 
 :root{
@@ -78,7 +78,6 @@ iup-terminal > div {
 
     font-family: 'Terminal';
     font-size: .8em;
-    line-height: 2em;
     text-overflow:ellipsis;
 
     color: hsl(144, 60%, 50%);
@@ -173,6 +172,7 @@ iup-window > div{
     white-space: nowrap;
     text-overflow:clip;
     height: 1.5em;
+    display: inline-block;
 }
 
 #main_terminal {

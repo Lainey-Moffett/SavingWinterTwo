@@ -207,31 +207,56 @@ class Window extends HTMLElement {
 
 customElements.define("iup-window", Window);
 
-function _type_text(element, durration, animation){
+//Typing Text Functions
+const delay = ms => new Promise(res => setTimeout(res, 2000));
+
+async function _type_text(element, durration, reverse = false){
     element.classList.add("Typing");
-    element.animate(animation, {
+    let animation = element.animate([
+            { maxWidth: "0"},
+            { maxWidth: element.innerText.length + "ch"},],
+        {
             duration: element.innerText.length * durration,
             iterations: 1,
             easing: "steps(" + element.innerText.length + ", end)",
             fill: "forwards"
-        }).finished.then(a => {
-            a.commitStyles();
-            a.cancel();
-          });
+        });
+    
+    if(reverse)
+        animation.reverse();
 
+    await animation.finished;
+    animation.commitStyles();
     return element;
 }
 
-function type_text(element, durration = 10){
-    return _type_text(element, durration, [
-        { maxWidth: "0"},
-        { maxWidth: element.innerText.length + "ch"},
-    ]);
+async function type_text(element, durration = 25){
+    await _type_text(element, durration, false);
 }
 
-function untype_text(element, durration = 10){
-    return _type_text(element, durration, [
-        { maxWidth: `min(100%, ${element.innerText.length}ch)`},
-        { maxWidth: "0"}
-    ]);
+async function untype_text(element, durration = 25){
+    await _type_text(element, durration, true);
+}
+
+//Note: Text Terminal is set at window.onload
+async function just_type(text) {
+    text_terminal.innerHTML = text;
+    if (text == "I don't even need to check this move!") {
+        text_terminal.innerHTML = "<span>I don't even need to check</span><br><span>this move!</span>"
+        text_terminal.style.height = "auto";
+        await type_text(text_terminal);
+    } else {
+        text_terminal.innerHTML = text;
+        text_terminal.style.height = "1.5em";
+        await type_text(text_terminal);
+    }
+}
+
+
+async function type_and_untype(text) {
+    text_terminal.innerHTML = text;
+    text_terminal.style.height = "1.5em";
+    await type_text(text_terminal);
+    await delay(2000);
+    await untype_text(text_terminal);
 }
